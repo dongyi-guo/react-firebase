@@ -1,3 +1,11 @@
+# Firebase Configuration
+1. [Authentication]--enable providers--google and email/password
+2. [Storage]--mkdir images--upload images
+3. [Firestore-Database-(cloud-firestore)]--manually add collections and documents(dont forget to add createdAt and updatedAt timestamp to each document)
+* Note-to-self: for ddocument image--direct link should begin with https://firebasestorage.googleapis.com/...
+
+* firbaseConfig apiKey, authDomain etc.. can be found in Project-settings > General
+
 # Redesign your React application to make use of Firebase instead of using the standard Express-MongoDB server
 
 1. In order to configure your application to communicate with the Firebase server, you need to install the Firebase module
@@ -9,6 +17,8 @@ npm install --save firebase
 ## for more info: https://www.npmjs.com/package/firebase
 
 2. to reconfigure react application, go to src>firebase folder and modify config.js to include "Your" web app's Firebase configuration
+
+------POINT [2] IS ALL THAT NEED BE DONE IF REACT-FIREBASE IS CLONED------
 
 3. next, go to src>firebase folder and modify firebase.js
 - this is where we configure our application to communicate with the Firebase Server.
