@@ -1,10 +1,45 @@
 # Firebase Configuration
-1. [Authentication]--enable providers--google and email/password
-2. [Storage]--mkdir images--upload images
-3. [Firestore-Database-(cloud-firestore)]--manually add collections and documents(dont forget to add createdAt and updatedAt timestamp to each document)
-* Note-to-self: for ddocument image--direct link should begin with https://firebasestorage.googleapis.com/...
+* tap on add project and give the project a name. Next, tap on the icon [</>] to add firebase to your web app (firebase config info will be shown when you tap on [</>]... save this info in a convenient md file for later configuration on React client side)
 
-* firbaseConfig apiKey, authDomain etc.. can be found in Project-settings > General
+### Note-to-self: the above firebase config info firbaseConfig apiKey, authDomain etc.. can also be found in Project-settings > General
+
+## Enable the following build products 
+1. [Authentication]--enable providers--google and email/password
+- create new email/user manually called admin@keto.com (password: password)
+- for the google account: signup/login can be done through the web app
+
+2. [Storage]--mkdir images--upload images
+- set rules as follows and **publish**
+```
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read;
+      allow write: if request.auth != null;
+    }
+  }
+}
+```
+- for the above rules, the important point to note is to allow anyone to read and only authenticated users to write
+
+3. [Firestore-Database-(cloud-firestore)]--manually add collections (dishes,leaders and promotions) and documents(dont forget to add createdAt and updatedAt timestamp to each document)
+- set rules as follows and **publish**
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read;
+      allow write: if request.auth != null;
+    }
+  }
+}
+```
+- for the above rules, the important point to note is to allow anyone to read and only authenticated users to write
+
+4. Note-to-self: for document image (string)--direct link should begin with https://firebasestorage.googleapis.com/.../...
+
 
 # Redesign your React application to make use of Firebase instead of using the standard Express-MongoDB server
 
