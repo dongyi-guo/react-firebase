@@ -111,7 +111,7 @@ yarn build
 curl -sL https://firebase.tools | bash
 ```
 
-* Do the following from root folder, NOT build folder
+* Do the following from [project-root] folder, NOT build folder
 
 3. login to firebase (for auth)
 ```
