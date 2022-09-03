@@ -101,3 +101,27 @@ npm install --save firebase
 10. in the favorite component, you will notice that inside the favorite component down below here, you will notice that, when I am rendering the favorite component. Then, right here in this function here, const favorites, what I am doing is I am going into the favorites dishes, dishes is an array of all the dishIds here, so I map through that
 - So look at each dishId, then from the dishes, I filtered out that particular dish. And then obtained the dishId, so here you'll see me using the JavaScript array filter here. It will filter out that specific dish information and then render that particular dish
 
+### Firebase Hosting
+1. first create distribution folder
+```
+yarn build
+```
+2. install firebase-tools globally
+```
+curl -sL https://firebase.tools | bash
+```
+
+* Do the following from root folder, NOT build folder
+
+3. login to firebase (for auth)
+```
+firebase login
+```
+3. configure hosting
+```
+firebase init
+```
+4. deploy app
+```
+firebase deploy
+```
